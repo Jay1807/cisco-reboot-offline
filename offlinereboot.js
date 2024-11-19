@@ -1,6 +1,6 @@
 import xapi from 'xapi';
 
-// Function to check network activity
+
 async function checkNetworkActivity() {
     try {
       const value = await xapi.Status.Webex.Status.get()
@@ -18,14 +18,14 @@ async function checkNetworkActivity() {
     }
 }
 
-// Function to reboot the system
+
 function rebootSystem() {
     console.log('Rebooting system...');
     xapi.Command.SystemUnit.Boot(
     { Action: "Restart", Force: "True" });
 }
 
-// Main function to run the check every hour
+
 async function main() {
     const hasActivity = await checkNetworkActivity();
     if (!hasActivity) {
@@ -33,5 +33,5 @@ async function main() {
     }
 }
 
-// Schedule the check every hour
-setInterval(main, 21600000); // 21600000 ms = 30 seconds
+
+setInterval(main, 21600000)
